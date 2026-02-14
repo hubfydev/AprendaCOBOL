@@ -27,8 +27,11 @@
           88 WS-EXIT-OK      VALUE 'F' FALSE 'N'.
        77 WS-FS              PIC 9(02).
           88 WS-FS-OK        VALUE ZEROS.
+       LINKAGE SECTION.
+       01 LK-PARM.
+          03 LK-OPCAO        PIC X.
 
-       PROCEDURE DIVISION.
+       PROCEDURE DIVISION USING LK-PARM.
        MAIN-PROCEDURE.
 
            PERFORM P010-INCLUI    THRU P010-FIM UNTIL WS-EXIT-OK

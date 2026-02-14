@@ -1,0 +1,25 @@
+
+USERID:   IBMUSER
+password: BORGES79
+
+*************************************************************************
+***** Como alterar a senha de algum usuário que perdeu a sua senha? *****
+*************************************************************************
+
+1 - faça logon no TSO como IBMUSER.
+2 - no ISPF, escolha a opção 6 (Command)
+3 - Na linha de comando, digite:
+	ALTUSER <USERID> PASSWORD(WEBDOO) RESUME
+	
+	Onde: USERID é o ID do usuário que se deseja alterar a senha.
+
+
+****************************************************************
+***** Como derrubar um usuário que ficou preso no sistema? *****
+****************************************************************
+
+1 - abra a console do ZOS.
+2 - Na linha de comando digite:
+	C U=<USERID>
+
+	Onde: USERID é o ID do usuário que se deseja derrubar.

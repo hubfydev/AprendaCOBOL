@@ -62,8 +62,9 @@
        P020-FIM.
        P021-INCLUSAO.
 
-            DISPLAY "CHAMAR INCLUSAO. TECLE <ENTER> PARA CONTINUAR"
-            ACCEPT WS-OPCAO
+      *      DISPLAY "CHAMAR INCLUSAO. TECLE <ENTER> PARA CONTINUAR"
+      *      ACCEPT WS-OPCAO
+             CALL "PGMCLII1"
             .
        P021-FIM.
        P022-ALTERACAO.

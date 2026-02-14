@@ -1,7 +1,8 @@
       ******************************************************************
-      * Author: ANDRE COSTA
-      * Date: 04 FEV 2026
-      * Purpose: INCLUIR CLIENTES - ARQUIVO INDEXADO
+      * Author:
+      * Date:
+      * Purpose:
+      * Tectonics: cobc
       ******************************************************************
        IDENTIFICATION DIVISION.
        PROGRAM-ID. PGMCLII1.
@@ -11,7 +12,7 @@
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
            SELECT CLIENTES ASSIGN TO
-           'C:\COBOL\Aulas\Fontes\Treinos\ARQUIVOS\ARQCLII.DAT'
+           'C:\COBOL\Aulas\Fontes\Arquivo\ARQCLIId.DAT'
            ORGANIZATION IS INDEXED
            ACCESS MODE  IS RANDOM
            RECORD KEY   IS ID-CLI
@@ -28,10 +29,8 @@
           88 WS-EXIT-OK      VALUE 'F' FALSE 'N'.
        77 WS-FS              PIC 9(02).
           88 WS-FS-OK        VALUE ZEROS.
-       LINKAGE SECTION.
-       01 LK-PARMS.
-          03 LK-OPCAO              PIC 9.
-       PROCEDURE DIVISION USING LK-PARMS.
+
+       PROCEDURE DIVISION.
        MAIN-PROCEDURE.
 
            PERFORM P010-INCLUI    THRU P010-FIM UNTIL WS-EXIT-OK
@@ -40,12 +39,9 @@
            .
        P010-INCLUI.
 
-      ***** OPEN EXTEND É USADO EM ARQUIVOPS SEQUENCIAS
-      ***** INDEXADOS, COM OPEN I-O
-
             OPEN I-O CLIENTES
 
-            IF WS-FS EQUAL 35
+            IF WS-FS EQUAL 35 THEN
                OPEN OUTPUT CLIENTES
             END-IF
 
@@ -59,17 +55,15 @@
             DISPLAY "INFORME O NOME DO CLIENTE: "
             ACCEPT NM-CLI
 
-      *********** INDEXADO TESTA A CHAVE:
             WRITE REG-CLI
                   INVALID KEY
-                     DISPLAY "JA EXISTE CLIENTE COM ESTE ID."
+                     DISPLAY "JA EXISTE CLIENTE COM ESTE ID: " ID-CLI
                   NOT INVALID KEY
                      DISPLAY "CLIENTE CADASTRADO COM SUCESSO"
             END-WRITE
 
-      ********* AGORA, TESTA FILE STATUS NEGATIVOP
             IF NOT WS-FS-OK THEN
-               DISPLAY "ERRO AO GRAVAR O CLIENTE: " WS-FS
+               DISPLAY "ERRO A GRAVAR O CLIENTS."
             END-IF
 
             DISPLAY "<ENTER> CONTINUAR OU <F> PARA FINALIZAR"
